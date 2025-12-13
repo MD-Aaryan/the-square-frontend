@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import QRCode from "qrcode.react";
+import { QRCodeSVG } from "qrcode.react";
 import { Copy, CheckCircle, Clock, AlertCircle } from "lucide-react";
 import axiosInstance from "../../api/axiosInstance";
 
@@ -94,7 +94,7 @@ export const RewardDisplay: React.FC<RewardDisplayProps> = ({
 
       {/* QR Code */}
       <div className="bg-white p-6 rounded-lg mb-8 flex justify-center border-2 border-gray-200">
-        <QRCode
+        <QRCodeSVG
           value={JSON.stringify({ rewardId, discount: reward?.discount })}
           size={180}
           level="H"
