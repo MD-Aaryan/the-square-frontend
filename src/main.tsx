@@ -4,6 +4,10 @@ import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/authContext.tsx";
+import { injectSpeedInsights } from "@vercel/speed-insights";
+
+// Initialize Vercel Speed Insights for performance monitoring (client-side only)
+injectSpeedInsights();
 
 // Register Service Worker for API caching
 if ("serviceWorker" in navigator) {
