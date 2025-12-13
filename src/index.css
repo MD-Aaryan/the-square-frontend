@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Poppins font for all body text */
+body,
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Ensure all text elements use Poppins */
+p,
+span,
+a,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+label {
+  font-family: "Poppins", sans-serif;
+}
