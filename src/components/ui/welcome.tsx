@@ -5,7 +5,10 @@ export default function WelcomeSection() {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <section className="relative bg-[#F4F1DE] px-6 md:px-16 py-16 flex flex-col md:flex-row items-center gap-10">
+    <section
+      id="about"
+      className="relative bg-[#F4F1DE] px-6 md:px-16 py-16 flex flex-col md:flex-row items-center gap-10"
+    >
       {/* Image on left */}
       <div className="w-full md:w-1/2 rounded-lg overflow-hidden shadow-lg bg-gray-200">
         {/* Skeleton Loader */}

@@ -19,7 +19,7 @@ export default function Footer() {
           <ul className="space-y-2">
             <li>
               <a
-                href="#menu"
+                href="/menu"
                 className="hover:text-[#D26A3C] transition-colors"
               >
                 Menu
@@ -27,7 +27,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="#offers"
+                href="/offers"
                 className="hover:text-[#D26A3C] transition-colors"
               >
                 Offers
@@ -35,15 +35,15 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="#reservation"
+                href="/contact"
                 className="hover:text-[#D26A3C] transition-colors"
               >
-                Reservation
+                Contact
               </a>
             </li>
             <li>
               <a
-                href="#about"
+                href="/#about"
                 className="hover:text-[#D26A3C] transition-colors"
               >
                 About
@@ -57,10 +57,18 @@ export default function Footer() {
           <h3 className="text-xl font-bold mb-4">Contact</h3>
           <ul className="space-y-2 text-gray-600">
             <li className="flex items-center gap-2">
-              <MapPin size={16} /> 123 Main Street, City
+              <MapPin size={16} />
+              <a
+                href="https://www.google.com/maps/place/The+Square/@26.4585702,87.2812544,19.71z/data=!4m6!3m5!1s0x39ef75eb42371f45:0x56b6d081b132f99d!8m2!3d26.4586354!4d87.2814699!16s%2Fg%2F11yjxc_n12?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                Dharewa gali, Biratnagar 56613
+              </a>
             </li>
             <li className="flex items-center gap-2">
-              <Phone size={16} /> +91 9876543210
+              <Phone size={16} /> +977 9709022843
             </li>
             <li className="flex items-center gap-2">
               <Mail size={16} /> info@thesquarecafe.com
