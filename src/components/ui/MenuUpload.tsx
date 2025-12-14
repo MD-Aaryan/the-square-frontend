@@ -101,6 +101,7 @@ export default function MenuUpload() {
         { id: 1, name: "Coffee" },
         { id: 2, name: "Food" },
         { id: 3, name: "Desserts" },
+        { id: 4, name: "Drinks" },
       ]);
     }
   };
