@@ -124,17 +124,16 @@ export default function OfferUpload() {
   ) => {
     const updated = [...cards];
     if (field === "imageFile" && value instanceof File) {
-      // Trigger crop modal instead of direct assignment
+      // Simply assign the file without forcing crop modal
       const reader = new FileReader();
       reader.onload = (e) => {
         const preview = e.target?.result as string;
-        setCropState({
-          show: true,
-          cardIndex: index,
-          tempPreview: preview,
-          zoom: 1,
-          rotate: 0,
-        });
+        updated[index] = {
+          ...updated[index],
+          imageFile: value,
+          previewUrl: preview,
+        };
+        setCards(updated);
       };
       reader.readAsDataURL(value);
     } else {
