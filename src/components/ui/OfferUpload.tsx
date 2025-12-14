@@ -59,7 +59,7 @@ export default function OfferUpload() {
 
   // Load token from localStorage on component mount
   useEffect(() => {
-    const storedToken = localStorage.getItem("adminToken");
+    const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
     }

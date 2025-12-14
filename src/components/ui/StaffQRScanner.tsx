@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { AlertCircle, CheckCircle, Loader, Camera, Type } from "lucide-react";
 import axiosInstance from "../../api/axiosInstance";
 import { generateDeviceFingerprint } from "../../utils/deviceFingerprint";
+import jsQR from "jsqr";
 
 interface QRScannerProps {
   onRewardRedeemed?: (reward: any) => void;
@@ -77,20 +78,17 @@ export const StaffQRScanner: React.FC<QRScannerProps> = ({
       // Draw current frame to canvas
       ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
 
-      // Get image data to detect QR patterns
+      // Get image data to detect QR codes using jsQR
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const qrDetected = tryDetectQRPattern(imageData);
+      const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
 
-      if (qrDetected) {
-        // QR pattern detected - prompt for manual input since we can't decode QR
-        setError(
-          "QR detected! Please type the reward code manually or scan with phone camera app first."
-        );
-        setInputMode("manual");
-        inputRef.current?.focus();
+      if (qrCode) {
+        // QR code successfully decoded!
+        console.log("QR Code detected:", qrCode.data);
+        handleScan(qrCode.data);
       } else {
         setError(
-          "No QR code detected. Make sure QR code is visible and well-lit. Or switch to manual entry."
+          "No QR code detected. Make sure QR code is visible and well-lit."
         );
       }
     } catch (err) {
@@ -99,20 +97,6 @@ export const StaffQRScanner: React.FC<QRScannerProps> = ({
     } finally {
       setLoading(false);
     }
-  };
-
-  const tryDetectQRPattern = (imageData: ImageData): boolean => {
-    const { data } = imageData;
-    let darkPixels = 0;
-    for (let i = 0; i < data.length; i += 4) {
-      const r = data[i];
-      const g = data[i + 1];
-      const b = data[i + 2];
-      const brightness = (r + g + b) / 3;
-      if (brightness < 128) darkPixels++;
-    }
-    // If significant dark pixels detected, likely a QR code area
-    return darkPixels > data.length * 0.2;
   };
 
   const handleScan = async (scannedData: string) => {
